@@ -68,5 +68,5 @@ services:
 
 networks:
   proxynet:
-    name: mt_proxynet
+    name: llmptb_proxynet
     driver: bridge
