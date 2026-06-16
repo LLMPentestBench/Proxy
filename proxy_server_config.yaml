@@ -4,42 +4,64 @@ model_list:
     litellm_params:
       model: openai/qwen2.5:1.5b
       litellm_credential_name: desktop_ollama
+      input_cost_per_token: 0.00e-6
+      output_cost_per_token: 0.00e-6
 
   # Anthropic models
   - model_name: claude-haiku-4-5
     litellm_params: &claude-haiku-4-5-params
       model: claude-haiku-4-5
       litellm_credential_name: anthropic
+      input_cost_per_token: 1.00e-6
+      output_cost_per_token: 5.00e-6
   - model_name: claude-sonnet-4-6
     litellm_params: &claude-sonnet-4-6-params
       model: claude-sonnet-4-6
       litellm_credential_name: anthropic
+      input_cost_per_token: 3.00e-6
+      output_cost_per_token: 15.00e-6
   
   # OpenAI models
   - model_name: gpt-5-nano
     litellm_params:
       model: gpt-5-nano
       litellm_credential_name: openai
+      input_cost_per_token: 0.05e-6
+      output_cost_per_token: 0.40e-6
 
   # Together.ai models
   - model_name: togetherai-gemma-4-31b-it
     litellm_params: &togetherai-gemma4-31b-it-params
       model: openai/google/gemma-4-31b-it
       litellm_credential_name: togetherai
+      input_cost_per_token: 0.39e-6
+      output_cost_per_token: 0.97e-6
   - model_name: togetherai-gpt-oss-20b
     litellm_params:
       model: openai/openai/gpt-oss-20b
       litellm_credential_name: togetherai
+      input_cost_per_token: 0.05e-6
+      output_cost_per_token: 0.20e-6
   - model_name: togetherai-qwen3.5-397b
     litellm_params: &togetherai-qwen3-5-397b
       model: openai/Qwen/Qwen3.5-397B-A17B
       litellm_credential_name: togetherai
+      input_cost_per_token: 0.60e-6
+      output_cost_per_token: 3.60e-6
+  - model_name: togetherai-minimax-m3
+    litellm_params: &togetherai-minimax-m3-params
+      model: openai/MiniMaxAI/MiniMax-M3
+      litellm_credential_name: togetherai
+      input_cost_per_token: 0.30e-6
+      output_cost_per_token: 1.20e-6
   
   # Cerebras models
   - model_name: cerebras-llama3.1-8b
     litellm_params: &cerebras-llama3-1-8b-params
       model: openai/llama3.1-8b
       litellm_credential_name: cerebras
+      input_cost_per_token: 0.00e-6
+      output_cost_per_token: 0.00e-6
   
   # Vast.ai models (Ollama / vLLM)
   - model_name: vast-gemma4:26b
@@ -57,11 +79,11 @@ model_list:
   
   # Agent model aliases
   - model_name: pentagi
-    litellm_params: *togetherai-qwen3-5-397b
+    litellm_params: *togetherai-minimax-m3-params
   - model_name: pentestgpt
-    litellm_params: *togetherai-qwen3-5-397b
+    litellm_params: *togetherai-minimax-m3-params
   - model_name: cybersecurity-ai
-    litellm_params: *togetherai-qwen3-5-397b
+    litellm_params: *togetherai-minimax-m3-params
   
 
 credential_list:
