@@ -28,6 +28,11 @@ model_list:
       litellm_credential_name: openai
       input_cost_per_token: 0.05e-6
       output_cost_per_token: 0.40e-6
+  - model_name: openai-text-embedding-3-small
+    litellm_params: &openai-text-embedding-3-small-params
+      model: text-embedding-3-small
+      litellm_credential_name: openai
+      input_cost_per_token: 0.02e-6
 
   # Together.ai models
   - model_name: togetherai-gemma-4-31b-it
@@ -84,6 +89,10 @@ model_list:
     litellm_params: *togetherai-minimax-m3-params
   - model_name: cybersecurity-ai
     litellm_params: *togetherai-minimax-m3-params
+  - model_name: deadend-cli
+    litellm_params: *togetherai-minimax-m3-params
+  - model_name: deadend-cli-embeddings
+    litellm_params: *openai-text-embedding-3-small-params
   
 
 credential_list:
