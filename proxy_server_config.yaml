@@ -147,3 +147,4 @@ credential_list:
 
 general_settings:
   store_prompts_in_spend_logs: true
+  maximum_spend_logs_retention_period: 30d
