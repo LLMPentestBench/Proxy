@@ -33,6 +33,12 @@ model_list:
       model: text-embedding-3-small
       litellm_credential_name: openai
       input_cost_per_token: 0.02e-6
+  - model_name: gpt-5-mini
+    litellm_params:
+      model: gpt-5-nano
+      litellm_credential_name: openai
+      input_cost_per_token: 0.25e-6
+      output_cost_per_token: 2.00e-6
 
   # Together.ai models
   - model_name: togetherai-gemma-4-31b-it
@@ -68,6 +74,18 @@ model_list:
       input_cost_per_token: 0.00e-6
       output_cost_per_token: 0.00e-6
   
+  # OpenRouter models
+  - model_name: openrouter-llama-3.3-70b
+    litellm_params: &openrouter-llama-3-3-70b-params
+      model: openai/meta-llama/llama-3.3-70b-instruct
+      litellm_credential_name: openrouter
+      input_cost_per_token: 0.72e-6
+      output_cost_per_token: 0.72e-6
+      extra_body:
+        provider:
+          only: ["google-vertex/us-central1"]
+          allow_fallbacks: false
+
   # Vast.ai models (Ollama / vLLM)
   - model_name: vast-gemma4:26b
     litellm_params: &vast-gemma4-26b-params
@@ -81,19 +99,6 @@ model_list:
     litellm_params: *togetherai-qwen3-5-397b
   - model_name: cc-low
     litellm_params: *togetherai-qwen3-5-397b
-  
-  # Agent model aliases
-  - model_name: pentagi
-    litellm_params: *togetherai-minimax-m3-params
-  - model_name: pentestgpt
-    litellm_params: *togetherai-minimax-m3-params
-  - model_name: cybersecurity-ai
-    litellm_params: *togetherai-minimax-m3-params
-  - model_name: deadend-cli
-    litellm_params: *togetherai-minimax-m3-params
-  - model_name: deadend-cli-embeddings
-    litellm_params: *openai-text-embedding-3-small-params
-  
 
 credential_list:
   - credential_name: desktop_ollama
@@ -134,6 +139,14 @@ credential_list:
       description: "Cerebras API"
       custom_llm_provider: "openai"
 
+  - credential_name: openrouter
+    credential_values:
+      api_key: "os.environ/OPENROUTER_API_KEY"
+      api_base: "https://openrouter.ai/api/v1"
+    credential_info:
+      description: "OpenRouter API"
+      custom_llm_provider: "openai"
+
   - credential_name: vast_ai
     credential_values:
       api_key: "os.environ/VAST_AI_KEY"
@@ -148,3 +161,4 @@ credential_list:
 general_settings:
   store_prompts_in_spend_logs: true
   maximum_spend_logs_retention_period: 30d
+  use_x_forwarded_for: true
