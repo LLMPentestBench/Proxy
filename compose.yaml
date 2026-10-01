@@ -37,6 +37,7 @@ services:
       - ./proxy_server_config.yaml:/app/config.yaml
     networks:
       - proxynet
+      - proxynet_ext
     command:
       - "--config"
       - "/app/config.yaml"
@@ -70,4 +71,8 @@ services:
 networks:
   proxynet:
     name: llmptb_proxynet
+    driver: bridge
+    internal: true
+  proxynet_ext:
+    name: llmptb_proxynet_ext
     driver: bridge
