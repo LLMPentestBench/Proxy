@@ -84,13 +84,13 @@ model_list:
   # OpenRouter models
   - model_name: openrouter-llama-3.3-70b
     litellm_params: &openrouter-llama-3-3-70b-params
-      model: openai/meta-llama/llama-3.3-70b-instruct
+      model: openrouter/meta-llama/llama-3.3-70b-instruct
       litellm_credential_name: openrouter
-      input_cost_per_token: 0.72e-6
-      output_cost_per_token: 0.72e-6
+      input_cost_per_token: 0.20e-6
+      output_cost_per_token: 0.52e-6
       extra_body:
         provider:
-          only: ["google-vertex/us-central1"]
+          only: ["akashml/fp8"]
           allow_fallbacks: false
 
   # Vast.ai models (Ollama / vLLM)
@@ -149,10 +149,9 @@ credential_list:
   - credential_name: openrouter
     credential_values:
       api_key: "os.environ/OPENROUTER_API_KEY"
-      api_base: "https://openrouter.ai/api/v1"
     credential_info:
       description: "OpenRouter API"
-      custom_llm_provider: "openai"
+      custom_llm_provider: "openrouter"
 
   - credential_name: vast_ai
     credential_values:
