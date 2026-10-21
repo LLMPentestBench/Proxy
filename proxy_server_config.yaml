@@ -88,6 +88,7 @@ model_list:
       litellm_credential_name: openrouter
       input_cost_per_token: 0.20e-6
       output_cost_per_token: 0.52e-6
+      cache_read_input_token_cost: 0.10e-6
       extra_body:
         provider:
           only: ["akashml/fp8"]
