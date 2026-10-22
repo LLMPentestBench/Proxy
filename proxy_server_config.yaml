@@ -20,6 +20,14 @@ model_list:
       litellm_credential_name: anthropic
       input_cost_per_token: 3.00e-6
       output_cost_per_token: 15.00e-6
+  - model_name: claude-haiku-5-5
+    litellm_params: &claude-haiku-5-5-params
+      model: claude-haiku-5-5
+      litellm_credential_name: anthropic
+      input_cost_per_token: 0.10e-6
+      output_cost_per_token: 0.50e-6
+      cache_read_input_token_cost: 0.01e-6
+      cache_creation_input_token_cost: 0.125e-6
   
   # OpenAI models
   - model_name: gpt-5-nano
@@ -39,6 +47,7 @@ model_list:
       litellm_credential_name: openai
       input_cost_per_token: 0.25e-6
       output_cost_per_token: 2.00e-6
+      cache_read_input_token_cost: 0.025e-6
       additional_drop_params: ["context_management", "output_config"]
   - model_name: gpt-6-luna
     litellm_params:
